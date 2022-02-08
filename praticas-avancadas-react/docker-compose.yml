@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  frontend:
+    container_name: frontend
+    image: ikatoo/frontend
+    build: ./
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    ports:
+      - 8080:3000
+    links:
+      - redis
+  
+  redis:
+    image: redis:6.2-alpine
+    container_name: redis
+    restart: unless-stopped
+    network_mode: bridge
+    expose:
+      - 6379
