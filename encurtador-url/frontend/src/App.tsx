@@ -50,8 +50,7 @@ function App() {
                 Original Link
               </a>
             </>
-        )
-        }
+        )}
       </header>
     </div>
   );
