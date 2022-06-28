@@ -4,8 +4,8 @@
   "description": "Encurtador de URL com NodeJS, Typescript e MongoDB",
   "scripts": {
     "build": "tsc -p .",
-    "dev": "NODE_ENV=test ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts",
-    "start": "node ./dist/index.js"
+    "dev": "NODE_ENV=test ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
+    "start": "node ./dist/server.js"
   },
   "author": "Milton Carlos Katoo",
   "license": "CC-BY-NC-SA-4.0",

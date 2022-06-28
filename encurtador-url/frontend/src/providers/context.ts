@@ -11,7 +11,7 @@ const ShortenerContext = createContext<ShortenerContextProps>({
   loading: false,
   url: '',
   shortUrl: '',
-  shortenURL: (url: string) => Promise.resolve()
+  shortenURL: () => Promise.resolve()
 })
 
 export default ShortenerContext

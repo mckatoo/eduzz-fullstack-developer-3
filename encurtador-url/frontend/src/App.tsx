@@ -18,6 +18,7 @@ function App() {
     const newUrl = event.target.value
     setNewUrl(newUrl)
   }
+  console.log('loading', loading)
 
   return (
     <div className="App">
@@ -29,8 +30,9 @@ function App() {
           <Input onChange={inputChange} />
           <button type="submit">Shorten</button>
         </form>
+        
         {!!shortUrl.length && (
-          !loading
+          !!loading
             ? <>Loading...</>
             : <>
               <a
@@ -43,7 +45,7 @@ function App() {
               </a>
               <a
                 className="App-link"
-                href={url}
+                href={`http://${url}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >

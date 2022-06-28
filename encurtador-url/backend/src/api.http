@@ -1,0 +1,19 @@
+GET http://localhost:8000 HTTP/1.1
+
+###
+
+POST http://localhost:8000/shorten HTTP/1.1
+content-type: application/json
+
+{
+  "url": "asdfsd"
+}
+
+###
+
+POST http://localhost:8000 HTTP/1.1
+Content-Type: application/json
+
+{
+  "hash": "b0aabf9d"
+}
