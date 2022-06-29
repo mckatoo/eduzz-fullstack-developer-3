@@ -18,7 +18,6 @@ function App() {
     const newUrl = event.target.value
     setNewUrl(newUrl)
   }
-  console.log('loading', loading)
 
   return (
     <div className="App">
