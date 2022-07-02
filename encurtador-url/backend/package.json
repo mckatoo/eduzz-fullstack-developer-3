@@ -9,7 +9,8 @@
     "test:watch": "jest --watch",
     "test:api": "jest src/api.test.ts",
     "docker:up": "docker compose --file ./docker/stack.yml up --detach",
-    "docker:down": "docker compose --file ./docker/stack.yml down"
+    "docker:down": "docker compose --file ./docker/stack.yml down",
+    "docker:info": "docker compose --file ./docker/stack.yml ps"
   },
   "author": "Milton Carlos Katoo",
   "license": "CC-BY-NC-SA-4.0",
