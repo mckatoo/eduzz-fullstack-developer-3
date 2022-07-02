@@ -10,10 +10,11 @@ describe('Api test', () => {
   });
 
   it('should return a hash', async () => {
-    const response = await request(app).post("/shorten").send({
-      url: 'test'
-    })
-    console.log('response', response)
+    console.log('environments', process.env.DB_URL)
+    // const response = await request(app).post("/shorten").send({
+    //   url: 'test'
+    // })
+    // console.log('response', response)
 
     // expect(response.status).toBe(201)
     // expect(response.body).toHaveProperty('hash')
