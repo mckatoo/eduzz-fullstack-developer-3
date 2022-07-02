@@ -1,7 +1,7 @@
-import crypto from "crypto";
-import { Request, Response, Router } from "express";
+import { Request, Response } from "express";
 
 import { URL } from "../model/url";
+import crypto from "crypto";
 
 export default async (req: Request, res: Response) => {
   const { url } = req.body;
