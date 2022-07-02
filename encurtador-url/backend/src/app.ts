@@ -20,7 +20,7 @@ app.post("/shorten", shortener);
 app.get("/:hash", redirect);
 
 app.use("/", (_req: Request, res: Response) => {
-  res.json({ message: "ok" });
+  res.json({ status: "ok" });
 });
 
 export default app;
