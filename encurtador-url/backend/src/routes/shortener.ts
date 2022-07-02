@@ -13,5 +13,5 @@ export default async (req: Request, res: Response) => {
     .substring(0, 8);
   await URL.create({ url, hash });
 
-  return res.json({ hash });
+  return res.status(201).json({ hash });
 };
