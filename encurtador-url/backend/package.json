@@ -7,7 +7,7 @@
     "dev": "NODE_ENV=test ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
     "start": "node ./dist/server.js",
     "test:watch": "jest --watch",
-    "test:api": "jest src/api.test.ts",
+    "test:api": "jest --detectOpenHandles src/api.test.ts",
     "docker:up": "docker compose --file ./docker/stack.yml up --detach",
     "docker:down": "docker compose --file ./docker/stack.yml down",
     "docker:info": "docker compose --file ./docker/stack.yml ps"
@@ -15,6 +15,7 @@
   "author": "Milton Carlos Katoo",
   "license": "CC-BY-NC-SA-4.0",
   "devDependencies": {
+    "@shelf/jest-mongodb": "3.0.2",
     "@swc/core": "1.2.208",
     "@swc/jest": "0.2.21",
     "@types/cors": "2.8.12",
@@ -24,6 +25,7 @@
     "@types/mongoose": "5.11.97",
     "@types/supertest": "2.0.12",
     "jest": "28.1.2",
+    "mongodb-memory-server": "8.7.2",
     "supertest": "6.2.3",
     "ts-node-dev": "1.1.8",
     "typescript": "4.5.5"

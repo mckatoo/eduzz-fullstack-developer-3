@@ -1,7 +1,20 @@
 import request from 'supertest'
 import app from './app';
+import { MongoMemoryServer } from 'mongodb-memory-server';
+import mongoose from 'mongoose';
 
 describe('Api test', () => {
+
+  beforeAll(async () => {
+    const mongoServer = await MongoMemoryServer.create();
+    await mongoose.connect(mongoServer.getUri())
+  })
+
+  afterAll(async () => {
+    await mongoose.disconnect();
+    await mongoose.connection.close();
+  })
+
   it('should be status 200 and body ok', async () => {
     const response = await request(app).get("/").send()
 
@@ -10,13 +23,11 @@ describe('Api test', () => {
   });
 
   it('should return a hash', async () => {
-    console.log('environments', process.env.DB_URL)
-    // const response = await request(app).post("/shorten").send({
-    //   url: 'test'
-    // })
-    // console.log('response', response)
+    const response = await request(app).post("/shorten").send({
+      url: 'ikatoo.com.br'
+    })
 
-    // expect(response.status).toBe(201)
-    // expect(response.body).toHaveProperty('hash')
+    expect(response.status).toBe(201)
+    expect(response.body).toHaveProperty('hash')
   });
 });

@@ -4,6 +4,7 @@
  */
 
 module.exports = {
+  testEnvironment: 'node',
   coverageProvider: "v8",
   transform: {
     "^.+\\.ts?$": ["@swc/jest"],
