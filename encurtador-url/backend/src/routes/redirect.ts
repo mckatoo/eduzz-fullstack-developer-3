@@ -6,9 +6,7 @@ export default async (req: Request, res: Response) => {
   const { hash } = req.params;
   const urlExist = await URL.findOne({ hash });
 
-  if (urlExist) {
-    return res.redirect(urlExist.url);
-  }
+  if (urlExist) return res.redirect(urlExist.url);
 
   return res.status(404).json({ error: "Url not found" });
 };

@@ -6,6 +6,9 @@ import crypto from "crypto";
 export default async (req: Request, res: Response) => {
   const { url } = req.body;
 
+  const urlPattern = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+  if(!urlPattern.test(url)) return res.status(404).json({error: 'Invalid URL'})
+
   const hash = crypto
     .createHash("MD4")
     .update(url)
