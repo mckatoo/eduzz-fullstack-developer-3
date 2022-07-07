@@ -6,7 +6,7 @@ import { Input } from './components/Input'
 import { useShortener } from './hooks/shortener-hooks'
 
 function App() {
-  const { loading, shortUrl, url, shortenURL } = useShortener()
+  const { loading, shortUrl, url, shortenURL, error } = useShortener()
   const [newUrl, setNewUrl] = useState('');
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -26,34 +26,39 @@ function App() {
           Enter a URL to shorten in the field below.
         </p>
         <form onSubmit={handleSubmit}>
-          <Input onChange={inputChange} />
+          <Input onChange={inputChange} className={!!error ? "Error" : ""} />
+          {!!error &&
+            <p className="Error">
+              Please enter a valid URL
+            </p>
+          }
           <button type="submit">Shorten</button>
+
+          {!!shortUrl.length && (
+            !!loading
+              ? <>Loading...</>
+              : <>
+                <a
+                  className="App-link"
+                  href={shortUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Short Link
+                </a>
+                <a
+                  className="App-link"
+                  href={`http://${url}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Original Link
+                </a>
+              </>
+          )}
         </form>
-        
-        {!!shortUrl.length && (
-          !!loading
-            ? <>Loading...</>
-            : <>
-              <a
-                className="App-link"
-                href={shortUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Short Link
-              </a>
-              <a
-                className="App-link"
-                href={`http://${url}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Original Link
-              </a>
-            </>
-        )}
       </header>
-    </div>
+    </div >
   );
 }
 

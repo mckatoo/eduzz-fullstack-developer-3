@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border-width: .15rem;
+  border-radius: .4rem;
+  padding: .2rem;
+}
+
+button {
+  border-width: .15rem;
+  border-radius: .4rem;
+  padding: .2rem;
+  margin: 1rem 3rem;
+  background-color: #c9c9d6;
+  cursor: pointer;
+}
+
+.Error {
+  --tw-text-opacity: 1;
+  color: rgb(219 39 119/var(--tw-text-opacity));
+  font-size: .875rem;
+  line-height: 1.25rem;
+  border-color: rgb(219 39 119/var(--tw-text-opacity));
+}

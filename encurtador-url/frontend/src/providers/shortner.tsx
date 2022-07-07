@@ -10,17 +10,29 @@ type ShortenerProviderProps = {
 const ShortenerProvider = ({ children }: ShortenerProviderProps) => {
   const [shortener, setShortener] = useState({
     loading: false,
+    url: '',
     shortUrl: '',
-    url: ''
+    error: '',
   })
 
   const shortenURL = async (url: string) => {
-    const { data: { hash } } = await api.post('/shorten', { url })
-    setShortener({
-      loading: false,
-      shortUrl: `${process.env.REACT_APP_API_URL}/${hash}`,
-      url
-    })
+    try {
+      const hash = (await api.post('/shorten', { url })).data.hash
+      setShortener({
+        loading: false,
+        shortUrl: `${process.env.REACT_APP_API_URL}/${hash}`,
+        error: '',
+        url
+      })
+    } catch (e) {
+      const error = (e as Error).message
+      setShortener({
+        loading: false,
+        url,
+        shortUrl: '',
+        error
+      })
+    }
   }
 
   const contextValues: ShortenerContextProps = {
