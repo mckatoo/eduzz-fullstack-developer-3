@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { Input } from './components/Input'
 import { useShortener } from './hooks/shortener-hooks'
+import { CopyButton } from './components/CopyButton'
 
 function App() {
   const { loading, shortUrl, url, shortenURL, error } = useShortener()
@@ -38,14 +39,22 @@ function App() {
             !!loading
               ? <>Loading...</>
               : <>
-                <a
-                  className="App-link"
-                  href={shortUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Short Link
-                </a>
+                <div style={{
+                  display: 'inlineFlex',
+                  alignItems: 'center',
+                  alignContent: 'center',
+                  justifyContent: 'center',
+                }}>
+                  <a
+                    className="App-link"
+                    href={shortUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Short Link
+                  </a>
+                  <CopyButton url={shortUrl} />
+                </div>
                 <a
                   className="App-link"
                   href={`http://${url}`}
