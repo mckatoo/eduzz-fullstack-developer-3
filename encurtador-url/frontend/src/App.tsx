@@ -1,10 +1,14 @@
-import './App.css'
+import './App.css';
 
-import { useState } from 'react'
+import { useState } from 'react';
+import ReactGA from 'react-ga';
 
-import { Input } from './components/Input'
-import { useShortener } from './hooks/shortener-hooks'
-import { CopyButton } from './components/CopyButton'
+import { CopyButton } from './components/CopyButton';
+import { Input } from './components/Input';
+import { useShortener } from './hooks/shortener-hooks';
+
+const TRACKING_ID = `${process.env.REACT_APP_PUBLIC_GA_TRACKING}`
+ReactGA.initialize(TRACKING_ID)
 
 function App() {
   const { loading, shortUrl, url, shortenURL, error } = useShortener()
