@@ -10,7 +10,7 @@ const Analytics = () => (
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING}', {
+            gtag('config', '${process.env.REACT_APP_PUBLIC_GA_TRACKING}', {
               page_path: window.location.pathname,
             });
           `
